@@ -11,21 +11,21 @@ add_definitions(-DCONFIG_DIR="${CONFIG_DIR}")
 
 find_package( OpenCV REQUIRED )
 
-MESSAGE("OpenCV information:") 
-MESSAGE("  OpenCV_INCLUDE_DIRS: ${OpenCV_INCLUDE_DIRS}") 
-MESSAGE("  OpenCV_LIBRARIES: ${OpenCV_LIBRARIES}") 
-MESSAGE("  OpenCV_LIBRARY_DIRS: ${OpenCV_LIBRARY_DIRS}") 
+MESSAGE("OpenCV information:")
+MESSAGE("  OpenCV_INCLUDE_DIRS: ${OpenCV_INCLUDE_DIRS}")
+MESSAGE("  OpenCV_LIBRARIES: ${OpenCV_LIBRARIES}")
+MESSAGE("  OpenCV_LIBRARY_DIRS: ${OpenCV_LIBRARY_DIRS}")
 include_directories( ${OpenCV_INCLUDE_DIRS} )
 
 find_package( Boost 1.5.9 REQUIRED COMPONENTS filesystem system)
-MESSAGE("Boost information:") 
-MESSAGE("  Boost_INCLUDE_DIRS: ${Boost_INCLUDE_DIRS}") 
-MESSAGE("  Boost_LIBRARIES: ${Boost_LIBRARIES}") 
-MESSAGE("  Boost_LIBRARY_DIRS: ${Boost_LIBRARY_DIRS}") 
+MESSAGE("Boost information:")
+MESSAGE("  Boost_INCLUDE_DIRS: ${Boost_INCLUDE_DIRS}")
+MESSAGE("  Boost_LIBRARIES: ${Boost_LIBRARIES}")
+MESSAGE("  Boost_LIBRARY_DIRS: ${Boost_LIBRARY_DIRS}")
 
 INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
 INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS}/boost)
-LINK_DIRECTORIES(${Boost_LIBRARY_DIRS})	
+LINK_DIRECTORIES(${Boost_LIBRARY_DIRS})
 
 find_package(TBB REQUIRED)
 
@@ -143,6 +143,7 @@ foreach(file ${files})
 	install(DIRECTORY ${file} DESTINATION ${CMAKE_CONFIG_DIR}/AU_predictors)
 endforeach()
 
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
 if (${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
     execute_process(COMMAND ${CMAKE_CXX_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION)
     if (GCC_VERSION VERSION_LESS 4.7)
