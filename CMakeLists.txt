@@ -179,3 +179,9 @@ add_subdirectory(exe/FaceLandmarkImg)
 add_subdirectory(exe/FaceLandmarkVid)
 add_subdirectory(exe/FaceLandmarkVidMulti)
 add_subdirectory(exe/FeatureExtraction)
+
+set(CONF_INSTALL_PATH "\${OpenFace_CMAKE_DIR}/../../")
+set(config_file "${CMAKE_CURRENT_BINARY_DIR}/OpenFaceConfig.cmake")
+configure_file(${PROJECT_SOURCE_DIR}/cmake/OpenFaceConfig.in.cmake
+  ${config_file} @ONLY)
+install(FILES ${config_file} DESTINATION lib/cmake)
