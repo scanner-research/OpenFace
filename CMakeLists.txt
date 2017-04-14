@@ -184,4 +184,4 @@ set(CONF_INSTALL_PATH "\${OpenFace_CMAKE_DIR}/../../")
 set(config_file "${CMAKE_CURRENT_BINARY_DIR}/OpenFaceConfig.cmake")
 configure_file(${PROJECT_SOURCE_DIR}/cmake/OpenFaceConfig.in.cmake
   ${config_file} @ONLY)
-install(FILES ${config_file} DESTINATION lib/cmake)
+install(FILES ${config_file} ${PROJECT_SOURCE_DIR}/cmake/modules/FindTBB.cmake DESTINATION lib/cmake)
